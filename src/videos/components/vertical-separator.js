@@ -22,7 +22,6 @@ const styles = StyleSheet.create({
     separator: {
         borderTopWidth: 1,
     }
-
 })
 
 
