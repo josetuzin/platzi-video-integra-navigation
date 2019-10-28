@@ -12,7 +12,9 @@ import Suggestion from '../components/suggestion'
 
 class SuggestionList extends Component {
 
-    renderEmpty = () => <Empty text="No existen sugerencias :(" />
+    keyExtractor = item => item.id.toString()
+
+    renderEmpty = () => <Empty text="Aún no hay sugerencias :(" />
 
     itemSeparator = () => <Separator />
 
@@ -23,20 +25,11 @@ class SuggestionList extends Component {
     }
 
     render() {
-        const list = [
-            {
-                title: 'Avengers',
-                key: '1'
-            },
-            {
-                title: 'Pokemon',
-                key: '2'
-            }
-        ]
         return (
             <Layout title='Recomendado para ti'>
                 <FlatList
-                    data={list}
+                    keyExtractor={this.keyExtractor}
+                    data={this.props.list}
                     ListEmptyComponent={ this.renderEmpty }
                     ItemSeparatorComponent={this.itemSeparator }
                     renderItem={ this.renderItem }
