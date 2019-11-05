@@ -13,7 +13,7 @@ import PlayPause from '../components/play-pause'
 class Player extends Component {
     state = {
         loading: true,
-        paused: false,
+        paused: true,
     }
     onBuffer = ({ isBuffering }) => {
         this.setState({

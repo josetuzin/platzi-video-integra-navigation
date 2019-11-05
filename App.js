@@ -13,6 +13,7 @@ import CategoryList from './src/videos/containers/category-list'
 import Player from './src/player/containers/player'
 
 type Props = {}
+
 export default class App extends Component<Props> {
   state = {
     suggestionList: [],
