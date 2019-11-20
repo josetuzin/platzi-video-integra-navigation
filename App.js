@@ -18,17 +18,29 @@ type Props = {}
 
 export default class App extends Component<Props> {
   state = {
-    suggestionList: [],
-    categoryList: []
+    // suggestionList: [],
+    // categoryList: []
   }
   async componentDidMount() {
-    const movies = await API.getSuggestion(10)
-    const categories = await API.getMovies()
-    console.log(movies)
-    console.log(categories)
-    this.setState({
-      suggestionList: movies,
-      categoryList: categories,
+
+    const suggestionList = await API.getSuggestion(10)
+
+    store.dispatch({
+      type: 'SET_SUGGESTION_LIST',
+      payload: {
+        suggestionList
+      }
+    })
+
+    const categoryList = await API.getMovies()
+    // esto luego se va al reducer (reducer/videos.js) y va a buscar alguien que
+    // empiece a escuchar las acciones (type) y pueda hacer algo con eso
+    // entonces en el reducer valido el action.type
+    store.dispatch({
+      type: 'SET_CATEGORY_LIST',
+      payload: {
+        categoryList
+      }
     })
   }
   render() {
@@ -37,12 +49,8 @@ export default class App extends Component<Props> {
         <Home>
           <Header />
           <Player />
-          <CategoryList
-            list={this.state.categoryList}
-          />
-          <SuggestionList
-            list={this.state.suggestionList}
-          />
+          <CategoryList />
+          <SuggestionList />
         </Home>
       </Provider>
     )

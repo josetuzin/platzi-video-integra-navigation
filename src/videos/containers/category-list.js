@@ -10,7 +10,9 @@ import Layout from '../components/category-list-layout'
 import { connect } from 'react-redux'
 
 function mapStateToProps(state) {
-  debugger
+  return {
+    list: state.categoryList
+  }
 }
 
 class CategoryList extends Component {
@@ -41,4 +43,6 @@ class CategoryList extends Component {
   }
 }
 
-export default connect(mapStateToProps)(CategoryList)
+
+
+export default connect(mapStateToProps, null)(CategoryList)
