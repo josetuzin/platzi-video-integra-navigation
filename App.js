@@ -11,6 +11,8 @@ import SuggestionList from './src/videos/containers/suggestion-list'
 import API from './utils/api'
 import CategoryList from './src/videos/containers/category-list'
 import Player from './src/player/containers/player'
+import { Provider } from 'react-redux'
+import store from './store'
 
 type Props = {}
 
@@ -19,7 +21,7 @@ export default class App extends Component<Props> {
     suggestionList: [],
     categoryList: []
   }
-  async componentDidMount(){
+  async componentDidMount() {
     const movies = await API.getSuggestion(10)
     const categories = await API.getMovies()
     console.log(movies)
@@ -29,18 +31,20 @@ export default class App extends Component<Props> {
       categoryList: categories,
     })
   }
-  render(){
+  render() {
     return (
-      <Home>
-        <Header/>  
-        <Player />
-        <CategoryList 
-          list={this.state.categoryList}
-        />
-        <SuggestionList 
-          list={this.state.suggestionList}
-        />
-      </Home>
+      <Provider store={store}>
+        <Home>
+          <Header />
+          <Player />
+          <CategoryList
+            list={this.state.categoryList}
+          />
+          <SuggestionList
+            list={this.state.suggestionList}
+          />
+        </Home>
+      </Provider>
     )
   }
 }

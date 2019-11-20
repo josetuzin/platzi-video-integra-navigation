@@ -12,7 +12,7 @@ import PlayPause from '../components/play-pause'
 
 class Player extends Component {
     state = {
-        loading: true,
+        loading: false,
         paused: true,
     }
     onBuffer = ({ isBuffering }) => {
@@ -33,26 +33,26 @@ class Player extends Component {
         })
     }
 
-    render () {
+    render() {
         return (
-            <Layout 
+            <Layout
                 loading={this.state.loading}
                 video={
-                    <Video 
-                    source={{uri: 'http://download.blender.org/peach/bigbuckbunny_movies/BigBuckBunny_320x180.mp4'}}
-                    style={styles.video}
-                    resizeMode="contain"
-                    onBuffer={this.onBuffer}
-                    onLoad={this.onLoad}
-                    paused={this.state.paused}
+                    <Video
+                        source={{ uri: 'http://download.blender.org/peach/bigbuckbunny_movies/BigBuckBunny_320x180.mp4' }}
+                        style={styles.video}
+                        resizeMode="contain"
+                        onBuffer={this.onBuffer}
+                        onLoad={this.onLoad}
+                        paused={this.state.paused}
                     />
                 }
                 loader={
-                    <ActivityIndicator color="red"/>
+                    <ActivityIndicator color="red" />
                 }
                 controls={
                     <ControlLayout>
-                        <PlayPause 
+                        <PlayPause
                             onPress={this.playPause}
                             ppaused={this.state.paused}
                         />
