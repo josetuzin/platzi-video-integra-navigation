@@ -9,7 +9,7 @@ import { PersistGate } from 'redux-persist/integration/react'
 import { store, persistor } from './store'
 
 import Loading from './src/sections/components/Loading'
-import AppLayout from './src/App'
+import AppLayout from './src/app'
 
 type Props = {}
 

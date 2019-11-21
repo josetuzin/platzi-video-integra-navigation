@@ -6,7 +6,7 @@ import Home from './screens/containers/home'
 import Header from './sections/components/header'
 import SuggestionList from './videos/containers/suggestion-list'
 import CategoryList from './videos/containers/category-list'
-import Player from './player/containers/player'
+import Movie from './screens/containers/movie'
 
 class AppLayout extends Component {
     async componentDidMount() {
@@ -32,17 +32,25 @@ class AppLayout extends Component {
         })
     }
 
-    render(
-        return(
+    render() {
+        if (this.props.selectedMovie) {
+            return <Movie />
+        }
+        return (
             <Home>
-    <Header />
-    <Player />
-    <CategoryList />
-    <SuggestionList />
+                <Header />
+                <CategoryList />
+                <SuggestionList />
             </Home >
         )
-    )
+    }
 }
 
-export default connect(null)(AppLayout)
+function mapStateToProps(state) {
+    return {
+        selectedMovie: state.selectedMovie
+    }
+}
+
+export default connect(mapStateToProps)(AppLayout)
 
