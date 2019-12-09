@@ -4,11 +4,6 @@ import reducer from './reducers/videos'
 import AsyncStorage from '@react-native-community/async-storage'
 
 
-// const store = createStore(reducer, {
-//     suggestionList: [],
-//     categoryList: []
-// })
-
 const persistConfig = {
     key: 'root',
     storage: AsyncStorage,
